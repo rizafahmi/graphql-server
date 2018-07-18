@@ -6,7 +6,12 @@ const schema = new gql.GraphQLSchema({
     fields: {
       message: {
         type: gql.GraphQLString,
-        resolve: () => 'Hello, GraphQL',
+        resolve: async () => {
+          const message = await new Promise((resolve, _reject) => {
+            setTimeout(() => resolve('hello'), 3000);
+          });
+          return message;
+        },
       },
     },
   }),
