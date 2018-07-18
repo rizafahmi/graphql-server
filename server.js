@@ -1,15 +1,12 @@
 const express = require('express');
 const expressGraphql = require('express-graphql');
-const { buildSchema } = require('graphql');
 
-const schema = buildSchema(`
-  type Query {
-    message: String
-  }
-`);
+const schema = require('./schema.js');
+const { getCourse, getCourses } = require('./data.js');
 
 const root = {
-  message: () => 'Hello, GraphQL',
+  course: getCourse,
+  courses: getCourses,
 };
 
 const app = express();
