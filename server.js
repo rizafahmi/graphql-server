@@ -14,7 +14,6 @@ app.use(
   '/graphql',
   expressGraphql({
     schema,
-    rootValue: root,
     graphiql: true,
   }),
 );

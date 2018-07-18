@@ -24,7 +24,6 @@ const coursesData = [
     description:
       'An advanced JavaScript course for everyone! Scope, closures, prototypes, this, build your own framework, and more.',
     topic: 'JavaScript',
-    url: 'https://codingthesmartway.com/courses/understand-javascript/',
   },
 ];
 
