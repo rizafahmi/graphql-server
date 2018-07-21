@@ -1,21 +1,23 @@
-const express = require('express');
-const expressGraphql = require('express-graphql');
+const express = require("express");
+const expressGraphql = require("express-graphql");
 
-const schema = require('./schema.js');
-const { getCourse, getCourses } = require('./data.js');
+const schema = require("./schema.js");
+const { getCourse, getCourses } = require("./data.js");
 
 const root = {
   course: getCourse,
-  courses: getCourses,
+  courses: getCourses
 };
 
 const app = express();
 app.use(
-  '/graphql',
+  "/graphql",
   expressGraphql({
     schema,
-    graphiql: true,
-  }),
+    graphiql: true
+  })
 );
 
-app.listen(4000, () => console.log('Server running at http://localhost:4000/graphql'));
+app.listen(4000, () =>
+  console.log("GraphQL running at http://localhost:4000/graphql")
+);

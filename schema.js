@@ -15,7 +15,7 @@ const schema = new gql.GraphQLSchema({
           name: 'messages',
           fields: {
             message: {
-              type: gql.GraphQLString,
+              type: new gql.GraphQLNonNull(gql.GraphQLString),
             },
           },
         }),
