@@ -4,7 +4,8 @@ const {
   GraphQLID,
   GraphQLString,
   GraphQLBoolean,
-  GraphQLList
+  GraphQLList,
+  GraphQLNonNull
 } = require("graphql");
 
 const COURSES = require("./data/courses.js");
@@ -35,6 +36,15 @@ const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: "RootQueryType",
     fields: {
+      courseById: {
+        type: CourseType,
+        args: {
+          id: { type: new GraphQLNonNull(GraphQLID) }
+        },
+        resolve: (_parent, args, _context) => {
+          return COURSES.find(course => course.id === args.id);
+        }
+      },
       allCourses: {
         type: new GraphQLList(CourseType),
         resolve() {
